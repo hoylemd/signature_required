@@ -54,4 +54,9 @@ def option(request, option_id):
     option = Option.objects.get(pk=int(option_id))
     next_scene = option.destination
 
+    if option.given_item:
+        session = Session.objects.get(uuid=str(request.GET.get('session', "")))
+        i = Inventory(item=option.given_item, session=session)
+        i.save()
+
     return scene(request, str(next_scene.id), option.change_text_string)
