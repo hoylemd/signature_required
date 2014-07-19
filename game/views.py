@@ -9,18 +9,20 @@ def index(request):
 
 def scene(request, scene_id):
     normalized_id = int(scene_id)
-    session = ""
+    session = str(request.GET.get('session', ""))
+    scene = Scene.objects.get(pk=normalized_id)
 
-    if normalized_id == 1:
+    if session:
+        session = Session.objects.get(uuid=session)
+    else:
         # start a new session
-        session = "new"
-
-
+        session = Session(scene=scene)
+        session.save()
 
     context = {
-        'scene': Scene.objects.get(pk=normalized_id),
+        'scene': scene,
         'options': Option.objects.filter(scene=normalized_id),
-        'session': session_id,
+        'session': session.uuid,
     }
     return render(request, 'game/scene.html', context)
 

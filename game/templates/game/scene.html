@@ -8,7 +8,7 @@
 
 <ul>
     {% for option in options %}
-        <li><a href="/play/{{ option.destination.id }}" title="{{ option.text }}">
+        <li><a href="/play/{{ option.destination.id }}?session={{ session }}" title="{{ option.text }}">
             {{ option.text }}
         </a></li>
     {% endfor %}
