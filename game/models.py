@@ -27,8 +27,8 @@ class Option(models.Model):
     scene = models.ForeignKey(Scene, related_name="scenes_options")
     destination = models.ForeignKey(Scene, related_name="option_destinations")
     change_text_string = models.CharField(max_length=1000, blank=True)
-    required_item = models.ForeignKey(Item, related_name="option_item_required", null=True)
-    prohibited_item = models.ForeignKey(Item, related_name="option_item_prohibited", null=True)
+    required_item = models.ForeignKey(Item, related_name="option_item_required", null=True, blank=True)
+    prohibited_item = models.ForeignKey(Item, related_name="option_item_prohibited", null=True, blank=True)
     def __unicode__(self):  # Python 3: def __str__(self):
             return (self.text[:13] + '...') if len(self.text) > 16 else self.text
 
