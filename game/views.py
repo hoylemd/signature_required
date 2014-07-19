@@ -7,7 +7,7 @@ def index(request):
     context = {}
     return render(request, 'game/index.html', context)
 
-def scene(request, scene_id):
+def scene(request, scene_id, change_text=""):
     normalized_id = int(scene_id)
     session = str(request.GET.get('session', ""))
     scene = Scene.objects.get(pk=normalized_id)
@@ -46,8 +46,12 @@ def scene(request, scene_id):
         'scene': scene,
         'options': pruned_options,
         'session': session.uuid,
+        'change_text': change_text,
     }
     return render(request, 'game/scene.html', context)
 
 def option(request, option_id):
-        return HttpResponse("This is Option #%s." % option_id)
+    option = Option.objects.get(pk=int(option_id))
+    next_scene = option.destination
+
+    return scene(request, str(next_scene.id), option.change_text_string)

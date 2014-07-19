@@ -4,11 +4,15 @@
 
 <img style="width: 600px; height: 400px;" src="{% static scene.art_path %}" title="Image of {{ scene.title }}"/>
 
+{% if change_text %}
+<p>{{ change_text }}</p>
+{% endif %}
+
 <p>{{ scene.text }}</p>
 
 <ul>
     {% for option in options %}
-        <li><a href="/play/{{ option.destination.id }}?session={{ session }}" title="{{ option.text }}">
+        <li><a href="/play/option/{{ option.id }}?session={{ session }}" title="{{ option.text }}">
             {{ option.text }}
         </a></li>
     {% endfor %}
