@@ -9,7 +9,7 @@ class OptionInline(admin.TabularInline):
 
 class SceneAdmin(admin.ModelAdmin):
     fieldsets = [
-        ('Display', {'fields':['title', 'text']}),
+        ('Display', {'fields':['title', 'text', 'art_path']}),
     ]
     inlines = [OptionInline]
 
