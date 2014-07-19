@@ -11,6 +11,8 @@ class Scene(models.Model):
 class Session(models.Model):
     uuid = UUIDField()
     scene = models.ForeignKey(Scene, related_name="session_scene", default=0)
+    def __unicode__(self):  # Python 3: def __str__(self):
+            return self.uuid
 
 class Item(models.Model):
     name = models.CharField(max_length=100)
