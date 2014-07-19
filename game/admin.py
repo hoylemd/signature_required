@@ -1,5 +1,5 @@
 from django.contrib import admin
-from game.models import Scene, Option
+from game.models import Scene, Option, Item, Session, Inventory
 
 # custom model admins
 class OptionInline(admin.TabularInline):
@@ -15,3 +15,6 @@ class SceneAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Scene, SceneAdmin)
+admin.site.register(Item)
+admin.site.register(Session)
+admin.site.register(Inventory)
