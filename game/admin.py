@@ -7,7 +7,6 @@ class OptionInline(admin.TabularInline):
     extra = 3
     fk_name = 'scene'
 
-
 class SceneAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Display', {'fields':['title', 'text']}),

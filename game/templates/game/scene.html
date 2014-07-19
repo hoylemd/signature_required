@@ -1,0 +1,12 @@
+<h3>{{ scene.title }}</h3>
+
+<p>{{ scene.text }}</p>
+
+<ul>
+    {% for option in options %}
+        <li><a href="/play/{{ option.destination.id }}" title="{{ option.text }}">
+            {{ option.text }}
+        </a></li>
+    {% endfor %}
+</ul>
+
