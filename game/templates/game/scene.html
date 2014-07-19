@@ -1,4 +1,8 @@
+{% load staticfiles %}
+
 <h3>{{ scene.title }}</h3>
+
+<img src="{% static scene.art_path %}" title="Image of {{ scene.title }}"/>
 
 <p>{{ scene.text }}</p>
 
